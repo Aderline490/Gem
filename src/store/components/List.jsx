@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 
-const List = () => {
+const List = ({ handleOpenModal, openModal }) => {
   return (
     <>
       <div className="bg-[#F4F3F3] p-[30px] w-full h-full">
@@ -15,7 +15,10 @@ const List = () => {
               placeholder="Search by name..."
             />
           </div>
-          <div className="text-white font-bold flex justify-center items-center w-[198px] h-[40px] bg-[#333E97] rounded-[5px]">
+          <div
+            className="cursor-pointer text-white font-bold flex justify-center items-center w-[198px] h-[40px] bg-[#333E97] rounded-[5px]"
+            onClick={handleOpenModal}
+          >
             <Icon icon="material-symbols:add" />
             <p className="ml-2 ">Add a new Student</p>
           </div>
@@ -37,7 +40,10 @@ const List = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-white h-[50px] border-b-[#]" style={{borderBottom: "1px solid rgba(166, 164, 164, 0.26)"}}>
+              <tr
+                className="bg-white h-[50px] border-b-[#]"
+                style={{ borderBottom: "1px solid rgba(166, 164, 164, 0.26)" }}
+              >
                 <td className="center" style={{ textAlign: "center" }}>
                   #20201
                 </td>
@@ -66,7 +72,10 @@ const List = () => {
                   />
                 </td>
               </tr>
-              <tr className="bg-white h-[50px] border-b-[#]" style={{borderBottom: "1px solid rgba(166, 164, 164, 0.26)"}}>
+              <tr
+                className="bg-white h-[50px] border-b-[#]"
+                style={{ borderBottom: "1px solid rgba(166, 164, 164, 0.26)" }}
+              >
                 <td className="center" style={{ textAlign: "center" }}>
                   #20201
                 </td>
@@ -95,7 +104,10 @@ const List = () => {
                   />
                 </td>
               </tr>
-              <tr className="bg-white h-[50px] border-b-[#]" style={{borderBottom: "1px solid rgba(166, 164, 164, 0.26)"}}>
+              <tr
+                className="bg-white h-[50px] border-b-[#]"
+                style={{ borderBottom: "1px solid rgba(166, 164, 164, 0.26)" }}
+              >
                 <td className="center" style={{ textAlign: "center" }}>
                   #20201
                 </td>
@@ -124,7 +136,10 @@ const List = () => {
                   />
                 </td>
               </tr>
-              <tr className="bg-white h-[50px] border-b-[#]" style={{borderBottom: "1px solid rgba(166, 164, 164, 0.26)"}}>
+              <tr
+                className="bg-white h-[50px] border-b-[#]"
+                style={{ borderBottom: "1px solid rgba(166, 164, 164, 0.26)" }}
+              >
                 <td className="center" style={{ textAlign: "center" }}>
                   #20201
                 </td>
@@ -153,7 +168,10 @@ const List = () => {
                   />
                 </td>
               </tr>
-              <tr className="bg-white h-[50px] border-b-[#]" style={{borderBottom: "1px solid rgba(166, 164, 164, 0.26)"}}>
+              <tr
+                className="bg-white h-[50px] border-b-[#]"
+                style={{ borderBottom: "1px solid rgba(166, 164, 164, 0.26)" }}
+              >
                 <td className="center" style={{ textAlign: "center" }}>
                   #20201
                 </td>
@@ -182,7 +200,10 @@ const List = () => {
                   />
                 </td>
               </tr>
-              <tr className="bg-white h-[50px] border-b-[#]" style={{borderBottom: "1px solid rgba(166, 164, 164, 0.26)"}}>
+              <tr
+                className="bg-white h-[50px] border-b-[#]"
+                style={{ borderBottom: "1px solid rgba(166, 164, 164, 0.26)" }}
+              >
                 <td className="center" style={{ textAlign: "center" }}>
                   #20201
                 </td>
