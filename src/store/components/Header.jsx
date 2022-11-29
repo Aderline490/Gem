@@ -1,7 +1,6 @@
 import { Icon } from "@iconify/react";
 
 const Header = () => {
-  console.log("headerrrrrr");
   return (
     <>
       <div className="bg-white w-full h-[80px] flex justify-between items-center">
