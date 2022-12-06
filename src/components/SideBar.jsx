@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import logo from "../../assets/Gem.png";
+import logo from "../assets/Gem.png";
 
 import { Icon } from "@iconify/react";
 
