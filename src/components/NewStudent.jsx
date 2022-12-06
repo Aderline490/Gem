@@ -1,8 +1,21 @@
-
+import { useState } from "react";
+import Select from "react-select";
 
 const NewStudent = ({handleCloseModal}) => {
-  const classes = ["1A", "1B", "1C", "2A", "2B", "2C", "3A", "3B", "3C"];
-  const gender = ["Female", "Male"];
+  const [values, setValues] = useState({
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    gender: "",
+    class: 1,
+  });
+
+  const setFormValues = (e) => {
+    console.log(values);
+    setValues({ ...values, [e.target.name]: e.target.value });
+    console.log(values);
+  }
+  console.log(values);
   return (
     <>
       <div
@@ -15,45 +28,72 @@ const NewStudent = ({handleCloseModal}) => {
           <p className="font-black text-[30px]">Create new student</p>
           <form className="mt-16 flex flex-col justify-center items-center">
             <div className="w-full flex items-center">
-              <label className="text-[18px]">Name</label>
+              <label className="text-[18px]">First Name</label>
               <input
                 type="text"
-                className="bg-white w-[300px] rounded-[5px] h-[40px] pl-[10px] outline-none ml-16"
+                className="bg-white w-[290px] rounded-[5px] h-[40px] pl-[10px] outline-none ml-16"
                 style={{border: "1px solid #D9D9D9"}}
-                name="names"
-                placeholder="Names"
+                name="firstName"
+                
+                value={values.firstName}
+                onChange={setFormValues}
               />
             </div>
             <div className="mt-8 w-full flex items-center">
-              <label className="text-[18px]">Gender</label>
-              <select
+              <label className="text-[18px]">Last Name</label>
+              <input
                 type="text"
-                options={gender}
-                className="bg-white w-[300px] rounded-[5px] h-[40px] pl-[10px] outline-none ml-14"
+                className="bg-white w-[290px] rounded-[5px] h-[40px] pl-[10px] outline-none ml-16"
                 style={{border: "1px solid #D9D9D9"}}
-                name="names"
-                placeholder="Names"
+                name="lastName"
+                
+                value={values.lastName}
+                onChange={setFormValues}
               />
             </div>
             <div className="mt-8 w-full flex items-center">
               <label className="text-[18px]">Gender</label>
+              <Select
+                type="text"
+                options={[
+                  { value: 1, label: "Female" },
+                  { value: 2, label: "Male" },
+                ]}
+                className="bg-white w-[300px] rounded-[5px] h-[40px] pl-[10px] outline-none ml-20"
+                style={{border: "1px solid #D9D9D9"}}
+                name="gender"
+                value={values.gender}
+                placeholder="Gender"
+                onChange={setFormValues}
+              />
+            </div>
+            <div className="mt-8 w-full flex items-center">
+              <label className="text-[18px]">Date of birth</label>
               <input
                 type="date"
-                className="bg-white w-[300px] rounded-[5px] h-[40px] pl-[10px] outline-none ml-14"
+                className="bg-white w-[290px] rounded-[5px] h-[40px] pl-[10px] outline-none ml-12"
                 style={{border: "1px solid #D9D9D9"}}
-                name="names"
-                placeholder="Names"
+                name="dateOfBirth"
+                value={values.dateOfBirth}
+                onChange={setFormValues}
               />
             </div>
             <div className="mt-8 w-full flex items-center">
               <label className="text-[18px]">Class</label>
-              <select
+              <Select
                 type="text"
-                options={classes}
-                className="bg-white w-[300px] rounded-[5px] h-[40px] pl-[10px] outline-none ml-16"
+                options={[
+                  { value: 1, label: "Senior 1" },
+                  { value: 2, label: "Senior 2" },
+                  { value: 3, label: "Senior 3" },
+                  { value: 4, label: "Senior 4" },
+                  { value: 5, label: "Senior 5" },
+                ]}
+                className="bg-white w-[300px] rounded-[5px] h-[40px] pl-[10px] outline-none ml-24"
                 style={{border: "1px solid #D9D9D9"}}
                 name="names"
-                placeholder="Names"
+                value={values.firstName}
+                onChange={setFormValues}
               />
             </div>
             <div className="bg-[#333E97] w-[200px] h-[40px] text-white rounded-[5px] flex justify-center items-center mt-8">Save</div>
