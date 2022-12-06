@@ -7,8 +7,8 @@ import {
 
 import './App.css';
 
-import Dashboard from "./store/components/Dashboard";
-import Students from "./store/components/Students";
+import Dashboard from "./components/Dashboard";
+import Students from "./components/Students";
 
 const App = () => {
   return (
