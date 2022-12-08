@@ -2,20 +2,18 @@ import { Icon } from "@iconify/react";
 import { useState, useEffect } from "react";
 import { useDispatch, connect } from "react-redux";
 
-
 import { fetchStudents } from "../store/actions/StudentActions";
 
-const List = ({ handleOpenModal, openModal}) => {
-
+const List = ({ handleOpenModal, openModal }) => {
   const [students, setStudents] = useState([]);
 
-  const loadStudents = async() => {
+  const loadStudents = async () => {
     setStudents(await fetchStudents());
-  }
+  };
 
-useEffect( () => {
-  loadStudents();
-}, []);
+  useEffect(() => {
+    loadStudents();
+  }, []);
   return (
     <>
       <div className="bg-[#F4F3F3] p-[30px] w-full h-full">
@@ -55,45 +53,53 @@ useEffect( () => {
               </tr>
             </thead>
             <tbody>
-              {students.map((student, index) => {
-                return(
-                <tr
-                key={index}
-                className="bg-white h-[50px] border-b-[#]"
-                style={{ borderBottom: "1px solid rgba(166, 164, 164, 0.26)" }}
-              >
-                <td className="center" style={{ textAlign: "center" }}>
-                  {index + 1}
-                </td>
-                <td style={{ textAlign: "center" }}>{student.lastName + " " + student.firstName }</td>
-                <td style={{ textAlign: "center" }}>{student.dateOfBirth}</td>
-                <td style={{ textAlign: "center" }}>{student.gender}</td>
-                <td style={{ textAlign: "center" }}>Senior {student.classYear}</td>
-                <td style={{ textAlign: "center" }} className="center">
-                  <Icon
-                    icon="material-symbols:edit"
-                    style={{
-                      margin: "auto",
-                      fontSize: "20px",
-                      color: "#333E97",
-                      cursor: "pointer",
-                    }}
-                  />
-                </td>
-                <td className="">
-                  <Icon
-                    icon="mdi:trash"
-                    style={{
-                      margin: "auto",
-                      fontSize: "20px",
-                      color: "#FF0000",
-                      cursor: "pointer",
-                    }}
-                  />
-                </td>
-              </tr>
-              )})}
-              
+              {students?.map((student, index) => {
+                  return (
+                    <tr
+                      key={index}
+                      className="bg-white h-[50px] border-b-[#]"
+                      style={{
+                        borderBottom: "1px solid rgba(166, 164, 164, 0.26)",
+                      }}
+                    >
+                      <td className="center" style={{ textAlign: "center" }}>
+                        {index + 1}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {student.lastName + " " + student.firstName}
+                      </td>
+                      <td style={{ textAlign: "center" }}>
+                        {student.dateOfBirth}
+                      </td>
+                      <td style={{ textAlign: "center" }}>{student.gender}</td>
+                      <td style={{ textAlign: "center" }}>
+                        Senior {student.classYear}
+                      </td>
+                      <td style={{ textAlign: "center" }} className="center">
+                        <Icon
+                          icon="material-symbols:edit"
+                          style={{
+                            margin: "auto",
+                            fontSize: "20px",
+                            color: "#333E97",
+                            cursor: "pointer",
+                          }}
+                        />
+                      </td>
+                      <td className="">
+                        <Icon
+                          icon="mdi:trash"
+                          style={{
+                            margin: "auto",
+                            fontSize: "20px",
+                            color: "#FF0000",
+                            cursor: "pointer",
+                          }}
+                        />
+                      </td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </table>
         </div>
@@ -104,6 +110,6 @@ useEffect( () => {
 
 const mapStateToProps = (state) => ({
   students: state.students?.students,
-})
+});
 
 export default connect(mapStateToProps)(List);
