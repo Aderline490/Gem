@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 import { useState, useEffect } from "react";
 import { useDispatch, connect } from "react-redux";
 
-import { fetchStudents } from "../store/actions/StudentActions";
+import { deleteStudent, fetchStudents } from "../store/actions/StudentActions";
 
 const List = ({ handleOpenModal, openModal }) => {
   const [students, setStudents] = useState([]);
@@ -14,6 +14,7 @@ const List = ({ handleOpenModal, openModal }) => {
   useEffect(() => {
     loadStudents();
   }, []);
+
   return (
     <>
       <div className="bg-[#F4F3F3] p-[30px] w-full h-full">
@@ -30,7 +31,7 @@ const List = ({ handleOpenModal, openModal }) => {
           </div>
           <div
             className="cursor-pointer text-white font-bold flex justify-center items-center w-[198px] h-[40px] bg-[#333E97] rounded-[5px]"
-            onClick={handleOpenModal}
+            onClick={() => handleOpenModal({}, false)}
           >
             <Icon icon="material-symbols:add" />
             <p className="ml-2 ">Add a new Student</p>
@@ -53,29 +54,31 @@ const List = ({ handleOpenModal, openModal }) => {
               </tr>
             </thead>
             <tbody>
+              {console.log(students)}
               {students?.map((student, index) => {
-                  return (
-                    <tr
-                      key={index}
-                      className="bg-white h-[50px] border-b-[#]"
-                      style={{
-                        borderBottom: "1px solid rgba(166, 164, 164, 0.26)",
-                      }}
-                    >
-                      <td className="center" style={{ textAlign: "center" }}>
-                        {index + 1}
-                      </td>
-                      <td style={{ textAlign: "center" }}>
-                        {student.lastName + " " + student.firstName}
-                      </td>
-                      <td style={{ textAlign: "center" }}>
-                        {student.dateOfBirth}
-                      </td>
-                      <td style={{ textAlign: "center" }}>{student.gender}</td>
-                      <td style={{ textAlign: "center" }}>
-                        Senior {student.classYear}
-                      </td>
-                      <td style={{ textAlign: "center" }} className="center">
+                return (
+                  <tr
+                    key={index}
+                    className="bg-white h-[50px] border-b-[#]"
+                    style={{
+                      borderBottom: "1px solid rgba(166, 164, 164, 0.26)",
+                    }}
+                  >
+                    <td className="center" style={{ textAlign: "center" }}>
+                      {index + 1}
+                    </td>
+                    <td style={{ textAlign: "center" }}>
+                      {student.lastName + " " + student.firstName}
+                    </td>
+                    <td style={{ textAlign: "center" }}>
+                      {student.dateOfBirth}
+                    </td>
+                    <td style={{ textAlign: "center" }}>{student.gender}</td>
+                    <td style={{ textAlign: "center" }}>
+                      Senior {student.classYear}
+                    </td>
+                    <td style={{ textAlign: "center" }} className="center">
+                      <div onClick={() => handleOpenModal(student, true)}>
                         <Icon
                           icon="material-symbols:edit"
                           style={{
@@ -85,8 +88,10 @@ const List = ({ handleOpenModal, openModal }) => {
                             cursor: "pointer",
                           }}
                         />
-                      </td>
-                      <td className="">
+                      </div>
+                    </td>
+                    <td className="">
+                      <div onClick={() => deleteStudent(student.id)}>
                         <Icon
                           icon="mdi:trash"
                           style={{
@@ -96,10 +101,11 @@ const List = ({ handleOpenModal, openModal }) => {
                             cursor: "pointer",
                           }}
                         />
-                      </td>
-                    </tr>
-                  );
-                })}
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
